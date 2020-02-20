@@ -70,6 +70,8 @@ namespace AutoCompleteTextBox.Demo.Model
                 new State {Abbreviations = "WI", Name = "Wisconsin"},
                 new State {Abbreviations = "张", Name = "张三"},
                 new State {Abbreviations = "李", Name = "李四"},
+                new State {Abbreviations = "墙", Name = "墙建筑"},
+                new State {Abbreviations = "墙", Name = "墙结构"},
                 new State {Abbreviations = "王", Name = "王五"}
             };
 
