@@ -9,7 +9,7 @@
         xmlns:providers="clr-namespace:AutoCompleteTextBox.Demo.Providers"
         mc:Ignorable="d"
         Title="WPF AutoComplete Demo" Height="350" Width="525"
-        
+
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         ResizeMode="NoResize"
         TextElement.FontSize="14"
@@ -17,12 +17,12 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        
+
         WindowStartupLocation="CenterScreen"
         WindowStyle="None">
 
     <Window.Resources>
-        <providers:StateSuggestionProvider x:Key="StateSuggestionProvider"/>
+        <providers:StateSuggestionProvider x:Key="StateSuggestionProvider" />
         <DataTemplate x:Key="StateTemplate">
             <Grid>
                 <TextBlock Text="{Binding Path=Name}"></TextBlock>
@@ -32,14 +32,12 @@
 
     <Border BorderThickness="2" BorderBrush="{StaticResource MaterialDesignTextBoxBorder}">
         <DockPanel Background="{StaticResource MaterialDesignPaper}"
-               
+
                LastChildFill="True">
             <materialDesign:ColorZone Height="50"
                            DockPanel.Dock="Top"
                            Mode="PrimaryMid"
-                           MouseDown="Titlebar_OnMouseDown"
-                           
-                           >
+                           MouseDown="Titlebar_OnMouseDown">
                 <DockPanel>
                     <Button x:Name="BtnClose"
                         Click="BtnClose_Click"
@@ -64,20 +62,19 @@
             </materialDesign:ColorZone>
             <materialDesign:ColorZone Height="30"
                         Mode="PrimaryLight"
-                        DockPanel.Dock="Bottom"           
+                        DockPanel.Dock="Bottom"
                         Padding="8">
                 <Border>
-                    <TextBlock FontSize="12" Text="https://github.com/quicoli/WPF-AutoComplete-TextBox"/>
+                    <TextBlock FontSize="12" Text="https://github.com/quicoli/WPF-AutoComplete-TextBox" />
                 </Border>
             </materialDesign:ColorZone>
-
 
             <Grid x:Name="GridContent" Margin="5,0,0,0" DockPanel.Dock="Bottom">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Margin="0,20,0,0" Orientation="Vertical">
                         <TextBlock Foreground="{StaticResource PrimaryHueDarkBrush}">Your name</TextBlock>
-                        <TextBox MaxLength="100" CharacterCasing="Upper" 
-                             Width="450" HorizontalAlignment="Left" 
+                        <TextBox MaxLength="100" CharacterCasing="Upper"
+                             Width="450" HorizontalAlignment="Left"
                              ToolTip="Type your full name please"
                              Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, Mode=TwoWay}">
                         </TextBox>
@@ -87,27 +84,31 @@
                         <TextBlock Foreground="{StaticResource PrimaryHueDarkBrush}">State</TextBlock>
                         <editors1:AutoCompleteTextBox HorizontalAlignment="Left"
                                                  Text=""
+                                                 IconPlacement="Left" IconVisibility="Visible"
+                                                 Watermark="请输入关键字" FontStyle="Italic"
                                                  Style="{StaticResource MaterialAutoCompleteTextBox}"
-                                                 MaxLength="50"                         
+                                                 MaxLength="50"
                                                  CharacterCasing="Upper"
                                                  DisplayMember="Name"
                                                  Height="26"
                                                  Width="450"
                                                  Provider="{StaticResource ResourceKey=StateSuggestionProvider}"
                                                  ItemTemplate="{StaticResource ResourceKey=StateTemplate}">
+                            <editors1:AutoCompleteTextBox.Icon>
+                                <Border Width="20" Height="20">
+                                    <Image Source="Images/search_icon.png" Height="16" Width="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </editors1:AutoCompleteTextBox.Icon>
                             <editors1:AutoCompleteTextBox.SelectedItem>
                                 <Binding Path="SelectedState" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
                                 </Binding>
                             </editors1:AutoCompleteTextBox.SelectedItem>
                             <editors1:AutoCompleteTextBox.LoadingContent>
-                                <TextBlock Text="Loading..." Margin="5" FontSize="14" />
+                                <TextBlock Text="搜索..." Margin="5" FontSize="14" />
                             </editors1:AutoCompleteTextBox.LoadingContent>
                         </editors1:AutoCompleteTextBox>
-
                     </StackPanel>
-
                 </StackPanel>
-
             </Grid>
         </DockPanel>
     </Border>
