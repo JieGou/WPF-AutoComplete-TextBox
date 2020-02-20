@@ -68,7 +68,9 @@ namespace AutoCompleteTextBox.Demo.Model
                 new State {Abbreviations = "WA", Name = "Washington"},
                 new State {Abbreviations = "WV", Name = "West Virginia"},
                 new State {Abbreviations = "WI", Name = "Wisconsin"},
-                new State {Abbreviations = "WY", Name = "Wyoming"}
+                new State {Abbreviations = "张", Name = "张三"},
+                new State {Abbreviations = "李", Name = "李四"},
+                new State {Abbreviations = "王", Name = "王五"}
             };
 
             return states.ToList();
